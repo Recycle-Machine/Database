@@ -13,6 +13,20 @@ class User(Resource):
         response['_id'] = str(response['_id'])
         return jsonify(response)
 
+    def post(self):
+        _id = str(database.db.Badges.insert_one({
+            'email': request.json['email'],
+            'name': request.json['name'],
+            'last name': request.json['last_name'],
+            'password': request.json['password'],
+            'state': request.json['state'],
+            'city': request.json['city'],
+            'enrollment': request.json['enrollment'],
+            'zip code': request.json['zip_code'],
+        }).inserted_id)
+
+        return jsonify({"_id": _id})
+
     def abort_if_not_exist(self,by,data):
         if by == "_id":
             response = database.db.Badges.find_one({"_id":ObjectId(data)})
