@@ -27,6 +27,27 @@ class User(Resource):
 
         return jsonify({"_id": _id})
 
+    def put(self, by, data):
+        response = self.abort_if_not_exist(by, data)
+
+        for key, value in request.json.items():
+            response[key] = value
+
+        database.db.Badges.update_one({'_id':ObjectId(response['_id'])},
+        {'$set':{
+            'email': request.json['email'],
+            'name': request.json['name'],
+            'last name': request.json['last_name'],
+            'password': request.json['password'],
+            'state': request.json['state'],
+            'city': request.json['city'],
+            'enrollment': request.json['enrollment'],
+            'zip code': request.json['zip_code'],
+        }})
+
+        response['_id'] = str(response['_id'])
+        return jsonify(response)
+
     def abort_if_not_exist(self,by,data):
         if by == "_id":
             response = database.db.Badges.find_one({"_id":ObjectId(data)})
