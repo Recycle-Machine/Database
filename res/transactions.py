@@ -13,3 +13,11 @@ class Transactions(Resource):
         return jsonify(response)
 
     
+
+    def abort_if_not_exist(self, _id):
+        response = database.db.Badges.find_one({'_id':ObjectId(_id)}, {"name": 1, "transactions": 1})
+
+        if response:
+            return response
+        else:
+            abort(jsonify({"status": 404, "_id": f"{_id} not found"}))
