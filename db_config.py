@@ -10,4 +10,4 @@ DB_NAME = os.getenv("DB_NAME")
 client = pymongo.MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@db-example.du4lj.mongodb.net/{DB_NAME}?retryWrites=true&w=majority")
 
 # Down here you need to add the database name
-db = client.Badges
+db = client.Integrative_db
