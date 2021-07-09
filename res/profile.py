@@ -7,4 +7,8 @@ import db_config as database
 class Profile(Resource):
     """ handeling post behavior """
 
-    
+    def get(self, _id):
+        response = self.abort_if_not_exist(_id)
+        response['_id'] = str(response['_id'])
+        return jsonify(response)
+
