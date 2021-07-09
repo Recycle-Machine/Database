@@ -28,7 +28,19 @@ class Profile(Resource):
 
         return jsonify({"message": f"The post {request.json['id']} was successfully created"})
 
-    
+    def put(self, _id, uuid):
+        response = self.abort_if_not_exist(_id)
+        database.db.Badges.update_one({"_id": ObjectId(_id), "profile.id": uuid},
+        {"$set":{
+            "profile.$.name": request.json["name"],
+            "profile.$.last name": request.json["last_name"],
+            "profile.$.state": request.json["state"],
+            "profile.$.city": request.json["city"],
+            "profile.$.enrollment": request.json["enrollment"],
+            "profile.$.zip code": request.json["zip_code"],
+        }})
+
+        return jsonify(request.json)
 
     def abort_if_not_exist(self, _id):
         response = database.db.Badges.find_one({'_id':ObjectId(_id)}, {"name": 1, "profile": 1})
