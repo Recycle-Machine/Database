@@ -6,7 +6,7 @@ import db_config as database
 
 
 class User(Resource):
-    ''' Handeling the data from one badge at a time '''
+    ''' Handeling the data from one user at a time '''
 
     def get(self,by,data):
         response = self.abort_if_not_exist(by, data)
@@ -18,8 +18,7 @@ class User(Resource):
             'email': request.json['email'],
             'user name': request.json['user_name'],
             'password': request.json['password'],
-            "transactions":[''],
-	        "profile":[''],
+	        "profile":[],
         }).inserted_id)
 
         return jsonify({"_id": _id})
