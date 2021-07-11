@@ -18,7 +18,6 @@ class User(Resource):
             'email': request.json['email'],
             'user name': request.json['user_name'],
             'password': request.json['password'],
-	        "profile":[],
         }).inserted_id)
 
         return jsonify({"_id": _id})
