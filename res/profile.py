@@ -5,7 +5,7 @@ from bson.json_util import ObjectId
 import db_config as database
 
 class Profile(Resource):
-    """ handeling post behavior """
+    """ handeling profile behavior """
 
     def get(self, _id):
         response = self.abort_if_not_exist(_id)
@@ -26,7 +26,7 @@ class Profile(Resource):
             }
         }})
 
-        return jsonify({"message": f"The post {request.json['id']} was successfully created"})
+        return jsonify({"message": f"The profile {request.json['id']} was successfully created"})
 
     def put(self, _id, uuid):
         response = self.abort_if_not_exist(_id)
