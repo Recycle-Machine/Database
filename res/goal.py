@@ -12,10 +12,11 @@ class Goal(Resource):
         response['_id'] = str(response['_id'])
         return jsonify(response)
 
+
     def post(self, _id):
         response = self.abort_if_not_exist(_id)
         database.db.Badges.update_one({"_id": ObjectId(_id)}, {"$push":{
-            "goal":{
+            "goals":{
                 "id": request.json["id"],
                 "type": request.json["type"],
                 "cardboard_quantity": request.json["cardboard_quantity"],

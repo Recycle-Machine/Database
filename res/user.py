@@ -11,6 +11,7 @@ class User(Resource):
     def get(self,by,data):
         response = self.abort_if_not_exist(by, data)
         response['_id'] = str(response['_id'])
+        
         return jsonify(response)
 
     def post(self):
