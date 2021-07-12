@@ -15,7 +15,7 @@ class Reward(Resource):
     def post(self, _id):
         response = self.abort_if_not_exist(_id)
         database.db.Badges.update_one({"_id": ObjectId(_id)}, {"$push":{
-            "reward":{
+            "rewards":{
                 "id": request.json["id"],
                 "type": request.json["type"],
                 "active": request.json["active"],
