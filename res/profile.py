@@ -23,6 +23,9 @@ class Profile(Resource):
                 "city": request.json["city"],
                 "enrollment": request.json["enrollment"],
                 "zip code": request.json["zip_code"],
+                "carrer": request.json["carrer"],
+                "grade": request.json["grade"],
+                "school": request.json["school"],
             }
         }})
 
