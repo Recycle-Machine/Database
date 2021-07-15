@@ -25,9 +25,9 @@ class Reward(Resource):
         return jsonify({"message": f"The reward {request.json['id']} was successfully created"})
 
     def abort_if_not_exist(self, _id):
-        response = database.db.Badges.find_one({'_id':ObjectId(_id)}, {"type": 1, "active": 1})
+        response = database.db.Badges.find_one({'_id':ObjectId(_id)}, {"name": 1, "rewards": 1})
 
         if response:
             return response
         else:
-            abort(jsonify({"status": 404, "_id": f"{_id} not found"}))
+            abort(jsonify({"status": 404, "_id": f"{_id} not found"}))  
