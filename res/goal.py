@@ -29,7 +29,7 @@ class Goal(Resource):
 
 
     def abort_if_not_exist(self, _id):
-        response = database.db.Badges.find_one({'_id':ObjectId(_id)}, {"name": 1, "goal": 1})
+        response = database.db.Badges.find_one({'_id':ObjectId(_id)}, {"name": 1, "goals": 1})
 
         if response:
             return response
