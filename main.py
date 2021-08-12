@@ -20,7 +20,7 @@ CORS(app)
 
 @app.route('/transactions/user/')
 def get_all_username():
-        response = list(database.db.transaction.find({'username': {"$eq":"Fredy"}}, {"_id":1}))
+        response = list(database.db.transaction.find({'username': {"$eq":"Fredy"}}))
 
         for document in response:
             document["_id"] = str(document['_id'])
